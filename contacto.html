@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto - Escape Room El Enigma</title>
+  </head>
+  <body>
+    <!-- Cabecera: nombre y presentación del negocio -->
+    <header>
+      <h1>Escape Room El Enigma</h1>
+      <p>Tres salas temáticas, 60 minutos y un único objetivo: resolver los enigmas y escapar antes de que se acabe el tiempo.</p>
+    </header>
+
+    <!-- Contenido principal: aquí irá el formulario -->
+    <main>
+      <h2>Reserva tu partida</h2>
+      <p>Rellena el formulario y te confirmaremos la reserva por correo.</p>
+
+      <!-- Formulario de reserva: envía los datos a /enviar por POST -->
+      <form action="/enviar" method="post">
+        <!-- Bloque 1: datos personales de quien reserva -->
+        <fieldset>
+          <legend>Datos de contacto</legend>
+
+          <p>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+          </p>
+
+          <p>
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" placeholder="nombre@ejemplo.com" required>
+          </p>
+        </fieldset>
+
+        <!-- Bloque 2: información sobre la partida -->
+        <fieldset>
+          <legend>Detalles de la partida</legend>
+
+          <p>
+            <label for="fecha">Fecha de la visita:</label>
+            <input type="date" id="fecha" name="fecha" required>
+          </p>
+
+          <p>
+            <label for="jugadores">Número de jugadores:</label>
+            <input type="number" id="jugadores" name="jugadores" min="2" max="6" value="2" required>
+          </p>
+
+          <p>Turno preferido:</p>
+          <p>
+            <input type="radio" id="turno-manana" name="turno" value="manana" required>
+            <label for="turno-manana">Mañana</label>
+
+            <input type="radio" id="turno-tarde" name="turno" value="tarde">
+            <label for="turno-tarde">Tarde</label>
+          </p>
+
+          <p>
+            <label for="sala">Sala que te interesa:</label>
+            <select id="sala" name="sala" required>
+              <option value="">-- Elige una sala --</option>
+              <option value="cripta">La Cripta del Conde (terror)</option>
+              <option value="laboratorio">El Laboratorio Perdido (misterio)</option>
+              <option value="espacio">Misión Estación Orión (aventura)</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="mensaje">Mensaje:</label><br>
+            <textarea id="mensaje" name="mensaje" rows="5" cols="40" placeholder="¿Celebráis algo especial? ¿Alguna duda sobre las salas?"></textarea>
+          </p>
+
+          <p>
+            <input type="checkbox" id="acepto" name="acepto" value="si" required>
+            <label for="acepto">Acepto las normas de la escape room y la política de privacidad</label>
+          </p>
+        </fieldset>
+
+        <!-- Botones: enviar el formulario o vaciar todos los campos -->
+        <p>
+          <button type="submit">Reservar</button>
+          <button type="reset">Borrar</button>
+        </p>
+      </form>
+
+      <!-- Elemento multimedia (fuera del formulario): tráiler de las salas -->
+      <h2>Mira nuestro tráiler</h2>
+      <video controls poster="img/poster.jpg" width="640">
+        <source src="video/trailer.mp4" type="video/mp4">
+        Tu navegador no puede reproducir este vídeo.
+      </video>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+      <p>© 2026 Escape Room El Enigma - Córdoba</p>
+    </footer>
+  </body>
+</html>
+
+<!--
+  Respuestas a las preguntas de la práctica
+
+  a) ¿Qué diferencias sintácticas existen entre HTML y XHTML?
+
+  XHTML es básicamente HTML pero escrito con las reglas de XML, así que es
+  mucho más estricto. En HTML el navegador te perdona muchos fallos y en
+  XHTML no. Las diferencias principales son:
+
+  - En XHTML todas las etiquetas se tienen que cerrar, incluso las vacías.
+    En HTML pongo <br> o <input> y ya está, en XHTML tendría que poner
+    <br /> o <input ... />.
+  - Las etiquetas y los atributos van siempre en minúsculas. En HTML
+    funcionaría igual <P> que <p>, en XHTML solo vale <p>.
+  - Los valores de los atributos siempre van entre comillas, por ejemplo
+    width="640" y no width=640.
+  - Las etiquetas tienen que estar bien anidadas, la última que abres es la
+    primera que cierras. <p><strong>hola</p></strong> estaría mal.
+  - No se pueden poner atributos sin valor. En este formulario he puesto
+    "required" solo, pero en XHTML habría que poner required="required".
+  - El documento tiene que tener un único elemento raíz (<html>) con su
+    espacio de nombres: xmlns="http://www.w3.org/1999/xhtml".
+
+  b) ¿Qué utilidad tiene XHTML en los sistemas de gestión de información?
+
+  Como un documento XHTML cumple las reglas de XML, se puede tratar como si
+  fuera un XML más. Eso hace que cualquier programa o herramienta que trabaje
+  con XML lo pueda leer y procesar automáticamente sin errores ni dudas,
+  cosa que con un HTML mal escrito no siempre pasa.
+
+  En un sistema de gestión de información (un gestor de contenidos, una base
+  de datos de documentos, la aplicación de una empresa...) esto sirve para
+  validar los documentos y comprobar que están bien hechos, sacar datos de
+  ellos, transformarlos a otros formatos con XSLT (por ejemplo pasarlos a PDF
+  o a una versión para móvil) e intercambiarlos entre aplicaciones distintas.
+  Además, al ser un código más ordenado y uniforme, es más fácil de mantener
+  y se ve igual en cualquier navegador o dispositivo.
+-->
+
